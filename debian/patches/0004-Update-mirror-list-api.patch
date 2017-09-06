@@ -1,0 +1,23 @@
+From: =?utf-8?q?Yunusemre_=C5=9Eent=C3=BCrk?=
+ <yunusemre.senturk@pardus.org.tr>
+Date: Wed, 6 Sep 2017 16:32:48 +0300
+Subject: Update mirror list api
+
+---
+ src/lastore-tools/mirrors.go | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/lastore-tools/mirrors.go b/src/lastore-tools/mirrors.go
+index dceece0..f2be843 100644
+--- a/src/lastore-tools/mirrors.go
++++ b/src/lastore-tools/mirrors.go
+@@ -17,7 +17,8 @@ import (
+ )
+ 
+ func GenerateMirrors(repository string, fpath string) error {
+-	ms, err := LoadMirrorSources(fmt.Sprintf("http://api.lastore.deepin.org/mirrors?repository=%s", repository))
++	_ = repository
++	ms, err := LoadMirrorSources("http://depo.pardus.org.tr/pardus/lastore/mirrors")
+ 	if err != nil {
+ 		return err
+ 	}

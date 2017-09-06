@@ -1,3 +1,33 @@
+lastore-daemon (0.9.44-3pardus5) onyedi; urgency=medium
+
+  * Add patches
+
+ -- Yunusemre Şentürk <yunusemre.senturk@pardus.org.tr>  Wed, 06 Sep 2017 16:47:17 +0300
+
+lastore-daemon (0.9.44-3pardus4) onyedi; urgency=medium
+
+  * Update the official url fot smartmirrors
+
+ -- Yunusemre Şentürk <yunusemre.senturk@pardus.org.tr>  Tue, 05 Sep 2017 14:46:58 +0300
+
+lastore-daemon (0.9.44-3pardus3) onyedi; urgency=medium
+
+  * Add patches
+
+ -- Yunusemre Şentürk <yunusemre.senturk@pardus.org.tr>  Tue, 05 Sep 2017 10:40:30 +0300
+
+lastore-daemon (0.9.44-3pardus2) onyedi; urgency=medium
+
+  * Add patches
+
+ -- Yunusemre Şentürk <yunusemre.senturk@pardus.org.tr>  Fri, 25 Aug 2017 16:43:19 +0300
+
+lastore-daemon (0.9.44-3pardus1) onyedi; urgency=medium
+
+  * Update rules file
+
+ -- Yunusemre Şentürk <yunusemre.senturk@pardus.org.tr>  Thu, 24 Aug 2017 11:04:12 +0300
+
 lastore-daemon (0.9.44-3) unstable; urgency=low
 
   * Auto Version update.

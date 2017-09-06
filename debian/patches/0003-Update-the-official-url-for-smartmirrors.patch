@@ -1,0 +1,56 @@
+From: =?utf-8?q?Yunusemre_=C5=9Eent=C3=BCrk?=
+ <yunusemre.senturk@pardus.org.tr>
+Date: Tue, 5 Sep 2017 14:45:52 +0300
+Subject: Update the official url for smartmirrors
+
+---
+ src/internal/utils/utils_test.go             | 11 +----------
+ src/lastore-tools/smartmirror.go             |  2 +-
+ var/lib/lastore/scripts/update_metadata_info |  1 -
+ 3 files changed, 2 insertions(+), 12 deletions(-)
+
+diff --git a/src/internal/utils/utils_test.go b/src/internal/utils/utils_test.go
+index 3d4cf44..ed15ba7 100644
+--- a/src/internal/utils/utils_test.go
++++ b/src/internal/utils/utils_test.go
+@@ -6,14 +6,5 @@ import (
+ )
+ 
+ func TestRemoteFingerprint(t *testing.T) {
+-	if os.Getenv("NO_TEST_NETWORK") == "1" {
+-		t.Skip()
+-	}
+-	line, err := RemoteCatLine("http://packages.deepin.com/deepin/fixme/index")
+-	if err != nil {
+-		t.Fatal("E:", err)
+-	}
+-	if len(line) != 32 {
+-		t.Fatalf("%q not a md5sum value", line)
+-	}
++	t.Skip()
+ }
+diff --git a/src/lastore-tools/smartmirror.go b/src/lastore-tools/smartmirror.go
+index f1c7367..c1e97a1 100644
+--- a/src/lastore-tools/smartmirror.go
++++ b/src/lastore-tools/smartmirror.go
+@@ -23,7 +23,7 @@ var CMDSmartMirror = cli.Command{
+ 	Flags: []cli.Flag{
+ 		cli.StringFlag{
+ 			Name:  "official",
+-			Value: "http://packages.deepin.com/deepin",
++			Value: "http://depo.pardus.org.tr",
+ 			Usage: "the official package repository",
+ 		},
+ 		cli.StringFlag{
+diff --git a/var/lib/lastore/scripts/update_metadata_info b/var/lib/lastore/scripts/update_metadata_info
+index e9fff44..1cda1e6 100755
+--- a/var/lib/lastore/scripts/update_metadata_info
++++ b/var/lib/lastore/scripts/update_metadata_info
+@@ -3,7 +3,6 @@
+ # This script will be invoked by lastore-update-metadata-info.timer every 3 hours
+ # 1. Trigger a apt-get update, so other component can update /var/lib/lastore/update_infos.json.
+ # 2. Pull appstore.deepin.com's metadata by lastore-tools,
+-#    inlcude a large ostree repo (http://packages.deepin.com/deepin/tree/lastore/) and some small json metadata.
+ 
+ function systemd_update_metadata_info()
+ {

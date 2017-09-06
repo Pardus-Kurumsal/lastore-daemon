@@ -1,0 +1,100 @@
+From: =?utf-8?q?Yunusemre_=C5=9Eent=C3=BCrk?=
+ <yunusemre.senturk@pardus.org.tr>
+Date: Fri, 25 Aug 2017 16:41:49 +0300
+Subject: Replace old mirror address to default original
+
+---
+ etc/apt/apt.conf.d/99mirrors.conf            | 2 +-
+ src/internal/system/system_apt.go            | 4 ++--
+ src/lastore-smartmirror/detect_test.go       | 2 +-
+ src/lastore-tools/metadata.go                | 2 +-
+ var/lib/lastore/mirrors.json                 | 2 +-
+ var/lib/lastore/repository_info.json         | 4 ++--
+ var/lib/lastore/scripts/update_metadata_info | 2 +-
+ 7 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/etc/apt/apt.conf.d/99mirrors.conf b/etc/apt/apt.conf.d/99mirrors.conf
+index d9d426c..f64e411 100644
+--- a/etc/apt/apt.conf.d/99mirrors.conf
++++ b/etc/apt/apt.conf.d/99mirrors.conf
+@@ -1,3 +1,3 @@
+ #Don't wirte anything except MirrorSource, otherwise the config may lost
+ 
+-Acquire::SmartMirrors::MirrorSource "http://depo.pardus.org.tr/deepin";
++Acquire::SmartMirrors::MirrorSource "http://depo.pardus.org.tr/pardus";
+diff --git a/src/internal/system/system_apt.go b/src/internal/system/system_apt.go
+index 88b941f..7a08cc3 100644
+--- a/src/internal/system/system_apt.go
++++ b/src/internal/system/system_apt.go
+@@ -133,8 +133,8 @@ func SystemArchitectures() ([]Architecture, error) {
+ 
+ var defaultRepoInfo = RepositoryInfo{
+ 	Name:   "desktop",
+-	Url:    "http://depo.pardus.org.tr/deepin",
+-	Mirror: "http://depo.pardus.org.tr/deepin",
++	Url:    "http://depo.pardus.org.tr/pardus",
++	Mirror: "http://depo.pardus.org.tr/pardus",
+ }
+ 
+ func init() {
+diff --git a/src/lastore-smartmirror/detect_test.go b/src/lastore-smartmirror/detect_test.go
+index fe2e98b..7e2f25f 100644
+--- a/src/lastore-smartmirror/detect_test.go
++++ b/src/lastore-smartmirror/detect_test.go
+@@ -32,7 +32,7 @@ func (*testWrap) TestDetect(c *C.C) {
+ 	}{
+ 		{
+ 			"http://localhost/abc",
+-			"http://depo.pardus.org.tr/deepin/dists/onyedi/Release",
++			"http://depo.pardus.org.tr/pardus/dists/onyedi/Release",
+ 			false,
+ 		},
+ 	}
+diff --git a/src/lastore-tools/metadata.go b/src/lastore-tools/metadata.go
+index 9b803b3..d6f492f 100644
+--- a/src/lastore-tools/metadata.go
++++ b/src/lastore-tools/metadata.go
+@@ -32,7 +32,7 @@ var CMDMetadata = cli.Command{
+ 		},
+ 		cli.StringFlag{
+ 			Name:  "remote",
+-			Value: "http://depo.pardus.org.tr/deepin/tree/lastore",
++			Value: "http://depo.pardus.org.tr/pardus/tree/lastore",
+ 			Usage: "the remote to fetch metadata",
+ 		},
+ 	},
+diff --git a/var/lib/lastore/mirrors.json b/var/lib/lastore/mirrors.json
+index 27bff97..0bf55e0 100644
+--- a/var/lib/lastore/mirrors.json
++++ b/var/lib/lastore/mirrors.json
+@@ -1,2 +1,2 @@
+-[{"id":"default","name":"Pardus Official Package Repository Mirror","url":"http://depo.pardus.org.tr/deepin/","name_locale":{"tr_TR":"Pardus Resmi Paket Deposu Yansısı"},"weight":100000}]
++[{"id":"default","name":"Pardus Official Package Repository Mirror","url":"http://depo.pardus.org.tr/pardus/","name_locale":{"tr_TR":"Pardus Resmi Paket Deposu Yansısı"},"weight":100000}]
+ 
+diff --git a/var/lib/lastore/repository_info.json b/var/lib/lastore/repository_info.json
+index b3a74e3..47e5e8d 100644
+--- a/var/lib/lastore/repository_info.json
++++ b/var/lib/lastore/repository_info.json
+@@ -1,7 +1,7 @@
+ [
+     {
+ 	"name": "desktop",
+-	"url": "http://depo.pardus.org.tr/deepin",
+-	"mirror": "http://depo.pardus.org.tr/deepin/"
++	"url": "http://depo.pardus.org.tr/pardus",
++	"mirror": "http://depo.pardus.org.tr/pardus/"
+     }
+ ]
+diff --git a/var/lib/lastore/scripts/update_metadata_info b/var/lib/lastore/scripts/update_metadata_info
+index a10fe66..e9fff44 100755
+--- a/var/lib/lastore/scripts/update_metadata_info
++++ b/var/lib/lastore/scripts/update_metadata_info
+@@ -12,7 +12,7 @@ function systemd_update_metadata_info()
+ 
+ function update_metadata_info_now()
+ {
+-    /usr/bin/lastore-tools metadata -u --remote=http://depo.pardus.org.tr/deepin/tree/lastore
++    /usr/bin/lastore-tools metadata -u --remote=http://depo.pardus.org.tr/pardus/tree/lastore
+     /usr/bin/lastore-tools update -r desktop -j applications -o /var/lib/lastore/applications.json
+     /usr/bin/lastore-tools update -r desktop -j categories -o /var/lib/lastore/categories.json
+     /usr/bin/lastore-tools update -r desktop -j xcategories -o /var/lib/lastore/xcategories.json

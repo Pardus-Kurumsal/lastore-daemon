@@ -1,0 +1,29 @@
+From: =?utf-8?q?Yunusemre_=C5=9Eent=C3=BCrk?=
+ <yunusemre.senturk@pardus.org.tr>
+Date: Tue, 5 Sep 2017 10:39:20 +0300
+Subject: Update 99lastore.conf and mirrors.json
+
+---
+ etc/apt/apt.conf.d/99lastore.conf | 2 +-
+ var/lib/lastore/mirrors.json      | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/etc/apt/apt.conf.d/99lastore.conf b/etc/apt/apt.conf.d/99lastore.conf
+index 855df2b..dae0002 100644
+--- a/etc/apt/apt.conf.d/99lastore.conf
++++ b/etc/apt/apt.conf.d/99lastore.conf
+@@ -5,4 +5,4 @@ DPkg::Post-Invoke { "/var/lib/lastore/scripts/build_system_info || true "}
+ Acquire::SmartMirrors::Enable true;
+ Acquire::SmartMirrors::Debug false;
+ Acquire::SmartMirrors::GuestURI "/usr/bin/lastore-smartmirror";
+-Acquire::SmartMirrors::MainSource "http://packages.deepin.com/deepin";
+\ No newline at end of file
++Acquire::SmartMirrors::MainSource "http://depo.pardus.org.tr/pardus";
+diff --git a/var/lib/lastore/mirrors.json b/var/lib/lastore/mirrors.json
+index 0bf55e0..bf80e7d 100644
+--- a/var/lib/lastore/mirrors.json
++++ b/var/lib/lastore/mirrors.json
+@@ -1,2 +1,2 @@
+-[{"id":"default","name":"Pardus Official Package Repository Mirror","url":"http://depo.pardus.org.tr/pardus/","name_locale":{"tr_TR":"Pardus Resmi Paket Deposu Yansısı"},"weight":100000}]
++[{"id":"default","name":"Pardus Official Package Repository Mirror","url":"http://depo.pardus.org.tr/pardus/","name_locale":{"tr_TR":"Pardus Resmi Paket Deposu Yansısı"},"weight":10}]
+ 

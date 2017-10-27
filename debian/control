@@ -1,0 +1,23 @@
+Source: lastore-daemon
+Section: admin
+Priority: extra
+Maintainer: Yunusemre Şentürk <yunusemre.senturk@pardus.org.tr>
+Build-Depends: debhelper (>= 9), pkg-config, golang-go | gccgo-5,
+ deepin-gettext-tools,
+Standards-Version: 3.9.8
+Homepage: http://github.com/linuxdeepin/lastore-daemon
+
+Package: lastore-daemon
+Architecture: any
+Provides: update-notifier
+Depends: ${shlibs:Depends}, ${misc:Depends}, dbus, procps, util-linux
+Recommends: ostree
+Description: daemon of lastore
+ daemon of lastore - support dbus interface
+
+Package: lastore-daemon-dev
+Architecture: all
+Depends: ${misc:Depends},
+ lastore-daemon (= ${binary:Version})
+Description: daemon of lastore - development files.
+ daemon of lastore - support dbus interface - development files.
